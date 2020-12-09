@@ -74,6 +74,23 @@ else {
 }
 };
 
+let game; 
+
+function printScore(){
+    if(win + draw + lose <= 5){
+    const results = document.createElement('p');
+    results.setAttribute('style', 'font-family: Helvetica, sans-serif; color: green; background: black');
+    results.textContent = `${game} let's play again! win: ${win} draw: ${draw} lose: ${lose}`;
+    container.appendChild(results);}
+    else{
+        const announcements = document.createElement('p');
+        announcements.setAttribute('style', 'font-family: Helvetica, sans-serif; color: red; background: yellow');
+        announcements.textContent = `5 turns is up!`;
+        container.appendChild(announcements);
+    }
+
+}
+
 /*User Inputs*/
 
 let playerChoice;
@@ -83,13 +100,8 @@ rock.addEventListener('click', () => {
     playerChoice = 'rock';
     computerGenerate();
     console.log(computerChoice);
-    let game = playRound(playerChoice, computerChoice);
-
-    const results = document.createElement('p');
-    results.setAttribute('style', 'font-family: Helvetica, sans-serif; color: green; background: black');
-    results.textContent = `${game} let's play again! win: ${win} draw: ${draw} lose: ${lose}`;
-    container.appendChild(results);
-
+    game = playRound(playerChoice, computerChoice);
+    printScore();
 });
 
 const paper = document.querySelector('#paper');
@@ -97,12 +109,8 @@ paper.addEventListener('click', () => {
     playerChoice = 'paper';
     computerGenerate();
     console.log(computerChoice);
-    let game = playRound(playerChoice, computerChoice);
-
-    const results = document.createElement('p');
-    results.setAttribute('style', 'font-family: Helvetica, sans-serif; color: green; background: black');
-    results.textContent = `${game} let's play again! win: ${win} draw: ${draw} lose: ${lose}`;
-    container.appendChild(results);
+    game = playRound(playerChoice, computerChoice);
+    printScore();
 });
 
 const scissors = document.querySelector('#scissors');
@@ -110,12 +118,8 @@ scissors.addEventListener('click', () => {
     playerChoice = 'scissors';
     computerGenerate();
     console.log(computerChoice);
-    let game = playRound(playerChoice, computerChoice);
-
-    const results = document.createElement('p');
-    results.setAttribute('style', 'font-family: Helvetica, sans-serif; color: green; background: black');
-    results.textContent = `${game} let's play again! win: ${win} draw: ${draw} lose: ${lose}`;
-    container.appendChild(results);
+    game = playRound(playerChoice, computerChoice);
+    printScore();
 });
 
 
