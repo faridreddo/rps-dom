@@ -76,17 +76,31 @@ else {
 
 let game; 
 
+/* let overallScore = `win: ${win} draw: ${draw} lose: ${lose}`; */
+
 function printScore(){
     if(win + draw + lose <= 5){
     const results = document.createElement('p');
     results.setAttribute('style', 'font-family: Helvetica, sans-serif; color: green; background: black');
     results.textContent = `${game} let's play again! win: ${win} draw: ${draw} lose: ${lose}`;
     container.appendChild(results);}
-    else{
-        const announcements = document.createElement('p');
-        announcements.setAttribute('style', 'font-family: Helvetica, sans-serif; color: red; background: yellow');
-        announcements.textContent = `5 turns is up!`;
-        container.appendChild(announcements);
+    else if (win > lose){
+        const winningText = document.createElement('p');
+        winningText.setAttribute('style', 'font-family: Helvetica, sans-serif; color: red; background: yellow');
+        winningText.textContent = `you are the champion! win: ${win} draw: ${draw} lose: ${lose}`;
+        container.appendChild(winningText);
+    }
+    else if (win < lose){
+        const losingText = document.createElement('p');
+        losingText.setAttribute('style', 'font-family: Helvetica, sans-serif; color: red; background: yellow');
+        losingText.textContent = `you loser! win: ${win} draw: ${draw} lose: ${lose}`;
+        container.appendChild(losingText);
+    }
+    else {
+        const drawingText = document.createElement('p');
+        drawingText.setAttribute('style', 'font-family: Helvetica, sans-serif; color: red; background: yellow');
+        drawingText.textContent = `you're a computer! win: ${win} draw: ${draw} lose: ${lose}`;
+        container.appendChild(drawingText);
     }
 
 }
