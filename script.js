@@ -1,5 +1,13 @@
 const container = document.querySelector('#container');
 
+var count = 0;
+var displayCount = document.getElementById("displayCount");
+function counter(){
+  count++;
+  displayCount.innerHTML = count;
+  console.log(count);
+}
+
 /* Computer Inputs */
 
 let randomNumbers;
@@ -76,36 +84,36 @@ else {
 
 let game; 
 
-/* let overallScore = `win: ${win} draw: ${draw} lose: ${lose}`; */
-
 function printScore(){
-    if(win + draw + lose <= 5){
+    let overallScore = `win: ${win} draw: ${draw} lose: ${lose}`;
+    if(win + draw + lose < 5){
     const results = document.createElement('p');
     results.setAttribute('style', 'font-family: Helvetica, sans-serif; color: green; background: black');
-    results.textContent = `${game} let's play again! win: ${win} draw: ${draw} lose: ${lose}`;
+    results.textContent = `${game} let's play again! ${overallScore}`;
     container.appendChild(results);}
     else if (win > lose){
         const winningText = document.createElement('p');
         winningText.setAttribute('style', 'font-family: Helvetica, sans-serif; color: red; background: yellow');
-        winningText.textContent = `you are the champion! win: ${win} draw: ${draw} lose: ${lose}`;
+        winningText.textContent = `you are the champion! ${overallScore}`;
         container.appendChild(winningText);
     }
     else if (win < lose){
         const losingText = document.createElement('p');
         losingText.setAttribute('style', 'font-family: Helvetica, sans-serif; color: red; background: yellow');
-        losingText.textContent = `you loser! win: ${win} draw: ${draw} lose: ${lose}`;
+        losingText.textContent = `you loser! ${overallScore}`;
         container.appendChild(losingText);
     }
     else {
         const drawingText = document.createElement('p');
         drawingText.setAttribute('style', 'font-family: Helvetica, sans-serif; color: red; background: yellow');
-        drawingText.textContent = `you're a computer! win: ${win} draw: ${draw} lose: ${lose}`;
+        drawingText.textContent = `you're a computer! ${overallScore}`;
         container.appendChild(drawingText);
     }
 
 }
 
 /*User Inputs*/
+
 
 let playerChoice;
 
